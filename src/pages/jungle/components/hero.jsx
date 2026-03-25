@@ -3,7 +3,11 @@ import React from "react";
 export default function Hero() {
   const scrollToSection = () => {
     const section = document.getElementById("quiz");
-    section.scrollIntoView({ behavior: "smooth" });
+
+    // ✅ safety check (error avoid karega)
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (

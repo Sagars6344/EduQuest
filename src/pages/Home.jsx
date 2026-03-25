@@ -1,9 +1,9 @@
 import React from "react";
-import Landing from "./landing";
+import Landing from "./Landing";
 import Courses from "./Courses";
 import Description from "./Description";
 import Feedback from "./Feedback";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return(

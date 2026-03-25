@@ -1,3 +1,4 @@
+
 const CourseItems = [
   {
     image: "/image/origbig1.png",

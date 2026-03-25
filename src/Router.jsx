@@ -16,106 +16,101 @@ import Leaderboard from './pages/Leaderboard'
 import ComingSoon from './pages/ComingSoon'
 import ProtectedRoute from './components/ProtectedRoute'
 
+// ✅ common wrapper bana diya (clean code)
+const withLayout = (Component) => (
+  <>
+    <ScrollToTop />
+    {Component}
+  </>
+)
+
 const Router = createBrowserRouter([
-    {
-        path: "/",
-        element: <>
-        <ScrollToTop/>
-        <Home/>
-        </>,
-        errorElement: <ErrorPage/>
-    },
-    {
-        path: "/courses",
-        element:<>
-        <ScrollToTop/>
-        <Courses/>
-        </>,
-        errorElement:<ErrorPage/>
-    },
-    {
-        path: "/intro",
-        element:<>
-        <ScrollToTop/>
-        <IntroVideo/>
-        </>,
-        errorElement:<ErrorPage/>
-    },
-    {
-        path: "/all-courses",
-        element:(<>
-        <ScrollToTop/>
-        <AllCourses/>
-        </>
+  {
+    path: "/",
+    element: withLayout(<Home />),
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/courses",
+    element: withLayout(<Courses />),
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/intro",
+    element: withLayout(<IntroVideo />),
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/all-courses",
+    element: withLayout(<AllCourses />),
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/courses/zoo",
+    element: withLayout(
+      <ProtectedRoute>
+        <Zoo />
+      </ProtectedRoute>
     ),
-        errorElement:<ErrorPage/>
-    },
-    {
-        path: "/courses/zoo",
-        element: <>
-        <ScrollToTop/>
-        <ProtectedRoute><Zoo/></ProtectedRoute>
-        </>,
-        errorElement:<ErrorPage/>
-    },
-    {
-        path: "/courses/jungle",
-        element: <>
-        <ScrollToTop/>
-        <ProtectedRoute><Jungle/></ProtectedRoute>
-        </>,
-        errorElement:<ErrorPage/>
-    },
-    {
-        path: "/sign-in/*",
-        element: <>
-        <ScrollToTop/>
-        <SignInPage />
-        </>,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: "/sign-up/*",
-        element: <>
-        <ScrollToTop/>
-        <SignUpPage />
-        </>,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: "/select-age",
-        element: <>
-        <ScrollToTop/>
-        <ProtectedRoute><SelectAge /></ProtectedRoute>
-        </>,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: "/dashboard",
-        element: <>
-        <ScrollToTop/>
-        <ProtectedRoute><Dashboard /></ProtectedRoute>
-        </>,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: "/leaderboard",
-        element: <>
-        <ScrollToTop/>
-        <ProtectedRoute><Leaderboard /></ProtectedRoute>
-        </>,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: "/courses/coming-soon",
-        element: <>
-        <ScrollToTop/>
-        <ProtectedRoute><ComingSoon /></ProtectedRoute>
-        </>,
-        errorElement: <ErrorPage />,
-    },
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/courses/jungle",
+    element: withLayout(
+      <ProtectedRoute>
+        <Jungle />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/sign-in/*",
+    element: withLayout(<SignInPage />),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/sign-up/*",
+    element: withLayout(<SignUpPage />),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/select-age",
+    element: withLayout(
+      <ProtectedRoute>
+        <SelectAge />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/dashboard",
+    element: withLayout(
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/leaderboard",
+    element: withLayout(
+      <ProtectedRoute>
+        <Leaderboard />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/courses/coming-soon",
+    element: withLayout(
+      <ProtectedRoute>
+        <ComingSoon />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
 ], {
-    basename: "/EduQuest/"   // 👈🔥 YE LINE ADD KI HAI
+  basename: "/EduQuest/" // ✅ correct (for GitHub Pages / subfolder deploy)
 });
 
 export default Router;

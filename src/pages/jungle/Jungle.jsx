@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../../components/Header";
 import Hero from "./components/hero";
 import Quiz from "../../components/course-componets/Quiz";
-import Footer from "../../components/footer";
+import Footer from "../../components/Footer";
 import Video from "./components/Video";
 import JungleQuestions from "./JungleQuestions";
 import "../courses.css";

@@ -12,10 +12,10 @@ function Reading() {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/yM_PpNJwaXc?si=3EYLcTCsSwXJoQ3b"
+            src="https://www.youtube.com/embed/yM_PpNJwaXc"
             title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            style={{ border: "none" }}   // ✅ modern way
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>

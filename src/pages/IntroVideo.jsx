@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import introVideo from "../assets/intro.mp4"; // ✅ important
 
 export default function IntroVideo() {
   const navigate = useNavigate();
 
-  // handle skip with "S"
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key.toLowerCase() === "s") {
-        navigate("/all-courses");
+        navigate("/EduQuest/all-courses"); // ✅ basename fix
       }
     };
     window.addEventListener("keydown", handleKeyPress);
@@ -20,13 +20,11 @@ export default function IntroVideo() {
       <video
         autoPlay
         className="w-full h-full object-cover"
-        onEnded={() => navigate("/all-courses")}
+        onEnded={() => navigate("/EduQuest/all-courses")} // ✅ basename fix
       >
-        <source src="/image/intro.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+        <source src={introVideo} type="video/mp4" />
       </video>
 
-      {/* Overlay skip hint */}
       <div className="absolute bottom-30 right-10 text-white text-lg bg-black/50 px-4 py-2 rounded-lg" style={{fontFamily:'heading'}}>
         Press <strong>S</strong> to skip
       </div>

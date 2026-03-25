@@ -4,29 +4,26 @@ import RetroCards from "../components/RetroCards";
 import CourseItems from "../components/CourseItems";
 import Gridlines from "react-gridlines";
 import RetroButton from "../components/RetroButton";
+
 const Courses = () => {
   const navigate = useNavigate();
 
   const handleCourseClick = (link) => {
-    navigate(link);
+    navigate(link); // ✅ single navigation
   };
 
   return (
     <div className="relative bg-black min-h-screen overflow-hidden">
-      {/* Gridlines in the background */}
+
       <Gridlines
         cellWidth={25}
         cellHeight={30}
-        lineColor="rgba(255,255,255,0.1)" // subtle white lines
+        lineColor="rgba(255,255,255,0.1)"
         className="absolute inset-0 pointer-events-none"
       />
 
-      {/* Page content */}
       <div className="relative z-10">
-        <p
-          className="font-bold text-3xl text-center pt-[150px] text-white"
-          style={{ fontFamily: "heading" }}
-        >
+        <p className="font-bold text-3xl text-center pt-[150px] text-white">
           Journey Through The World Of Environment
         </p>
   
@@ -37,26 +34,20 @@ const Courses = () => {
               onClick={() => handleCourseClick(course.link)}
               className="cursor-pointer"
             >
-                <RetroCards
-                  title={course.title}
-                  desc={course.description}
-                  source={course.image}
-                >
-              {course.link && (
-                  <a
-                    href={course.link}
-                    className="bg-pink-300 hover:bg-pink-600 text-white font-pixel px-4 py-2 rounded mt-2 inline-block"
-                    style={{ fontFamily: "button_text" }}
-                  >
-                    Start Quest
-                  </a>
-                )}
-                  </RetroCards>
-             </div>
+              <RetroCards
+                title={course.title}
+                desc={course.description}
+                source={course.image}
+              />
+            </div>
           ))}
         </div>
+
         <div className="flex items-center justify-center pb-[150px]">
-          <RetroButton text={"Explore All Quests"} onClick={()=>{navigate('/all-courses')}}/>
+          <RetroButton 
+            text={"Explore All Quests"} 
+            onClick={() => navigate('/EduQuest/all-courses')} // ✅ fixed
+          />
         </div>
       </div>
     </div>

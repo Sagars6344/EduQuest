@@ -6,21 +6,26 @@ const SignInPage = () => {
     <div
       className="flex justify-center items-center min-h-screen"
       style={{
-        backgroundImage: `url(/image/banner4.gif)`,
+        backgroundImage: `url(${process.env.PUBLIC_URL + "/image/banner4.gif"})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      {/* While Clerk is loading */}
+      {/* Loading state */}
       <ClerkLoading>
         <div className="text-white font-bold text-lg animate-pulse">
           Loading sign in form...
         </div>
       </ClerkLoading>
 
-      {/* When Clerk is ready */}
+      {/* Clerk ready */}
       <ClerkLoaded>
-        <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
+        <SignIn 
+          path="/sign-in" 
+          routing="path" 
+          signUpUrl="/sign-up"
+          afterSignInUrl="/dashboard"   // ✅ extra improvement
+        />
       </ClerkLoaded>
     </div>
   );

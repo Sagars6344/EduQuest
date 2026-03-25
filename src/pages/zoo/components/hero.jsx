@@ -3,7 +3,11 @@ import React from "react";
 export default function Hero() {
   const scrollToSection = () => {
     const section = document.getElementById("quiz");
-    section.scrollIntoView({ behavior: "smooth" });
+
+    // ✅ safety check
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (

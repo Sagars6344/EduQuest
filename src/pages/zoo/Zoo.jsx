@@ -1,12 +1,11 @@
 import React from "react";
 import Header from "../../components/Header";
-import Hero from "./components/hero";
-import Game from "./components/game";
-import Quiz from "../../components/course-componets/Quiz";
-import Footer from "../../components/footer";
+import Hero from "./components/Hero"; // ✅ fixed
+import Game from "./components/Game"; // ✅ fixed
+import Quiz from "../../components/course-components/Quiz"; // ✅ fixed spelling
+import Footer from "../../components/Footer"; // ✅ fixed
 import ZooQuestions from "./ZooQuestions";
 import "../courses.css";
-
 
 function Zoo(){
     return (
@@ -17,7 +16,7 @@ function Zoo(){
             <Quiz ques={ZooQuestions} quizType="zoo" />
             <Footer />
         </div>
-        
     );
 }
+
 export default Zoo;

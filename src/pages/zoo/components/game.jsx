@@ -1,4 +1,5 @@
 import React from "react";
+import testImage from "../../assets/test_image.png"; // ✅ correct import
 
 function Game() {
   return (
@@ -15,7 +16,7 @@ function Game() {
 
         <div>
           <a
-            href="/game/jungle_game.html"
+            href="/EduQuest/game/jungle_game.html" // ✅ fixed path
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -25,7 +26,7 @@ function Game() {
       </div>
 
       <div className="game-image">
-        <img src="/image/test_image.png" alt="Game preview" />
+        <img src={testImage} alt="Game preview" /> {/* ✅ fixed */}
       </div>
     </div>
   );

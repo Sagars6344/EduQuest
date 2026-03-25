@@ -3,10 +3,22 @@ import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../SupabaseClient";
 import Header from "../components/Header";
-import Footer from "../components/footer";
+import Footer from "../components/Footer"; // ✅ fixed case
 import RetroButton from "../components/RetroButton";
 import RetroCards from "../components/RetroCards";
 import Gridlines from "react-gridlines";
+
+// ✅ IMPORT IMAGES
+import img1 from "../assets/origbig1.png";
+import img2 from "../assets/origbig2.png";
+import img3 from "../assets/origbig3.png";
+import img4 from "../assets/origbig4.png";
+import img5 from "../assets/origbig5.png";
+import img6 from "../assets/origbig6.png";
+import banner from "../assets/banner.gif";
+import banner1 from "../assets/banner1.png";
+import banner2 from "../assets/banner2.png";
+import banner4 from "../assets/banner4.gif";
 
 const Dashboard = () => {
   const { user } = useUser();
@@ -25,12 +37,8 @@ const Dashboard = () => {
           .eq("id", user.id)
           .single();
         
-        if (!data) {
-          navigate("/select-age");
-          return;
-        }
-        if (!data.age_category) {
-          navigate("/select-age");
+        if (!data || !data.age_category) {
+          navigate("/EduQuest/select-age"); // ✅ fixed
           return;
         }
         
@@ -46,93 +54,37 @@ const Dashboard = () => {
 
   const courses = {
     kids: [
-      { 
-        title: "ZooTopia", 
-        description: "Step into the wild and explore the fascinating world of animals, their habitats in a fun, interactive way.",
-        link: "/courses/zoo",
-        image: "/image/origbig3.png",
-        points: 10
-      },
-      { 
-        title: "Our Planet, Our Home", 
-        description: "Explore the fundamentals of our environment, its ecosystems, and the importance of protecting our planet.",
-        link: "/courses/coming-soon",
-        image: "/image/origbig1.png",
-        points: 10
-      },
-      { 
-        title: "Ocean Mysteries", 
-        description: "Uncover the secrets of the deep blue sea and its amazing creatures.",
-        link: "/courses/coming-soon",
-        image: "/image/origbig4.png",
-        points: 10
-      }
+      { title: "ZooTopia", description: "Explore animals.", link: "/EduQuest/courses/zoo", image: img3, points: 10 },
+      { title: "Our Planet, Our Home", description: "Learn environment.", link: "/EduQuest/courses/coming-soon", image: img1, points: 10 },
+      { title: "Ocean Mysteries", description: "Explore oceans.", link: "/EduQuest/courses/coming-soon", image: img4, points: 10 }
     ],
     teens: [
-      { 
-        title: "Jungle Detectives", 
-        description: "Dive into the world of wildlife and ecosystems, learning to observe and understand nature around us.",
-        link: "/courses/jungle",
-        image: "/image/origbig2.png",
-        points: 10
-      },
-      { 
-        title: "Climate Guardians", 
-        description: "Learn about climate change and how you can become a guardian of our planet.",
-        link: "/courses/coming-soon",
-        image: "/image/origbig5.png",
-        points: 10
-      },
-      { 
-        title: "Plastic Pirates", 
-        description: "Join the fight against plastic pollution and discover ways to reduce waste.",
-        link: "/courses/coming-soon",
-        image: "/image/origbig6.png",
-        points: 10
-      }
+      { title: "Jungle Detectives", description: "Wildlife learning.", link: "/EduQuest/courses/jungle", image: img2, points: 10 },
+      { title: "Climate Guardians", description: "Climate change.", link: "/EduQuest/courses/coming-soon", image: img5, points: 10 },
+      { title: "Plastic Pirates", description: "Fight pollution.", link: "/EduQuest/courses/coming-soon", image: img6, points: 10 }
     ],
     adults: [
-      { 
-        title: "Recycling Basics", 
-        description: "Learn how to sort and recycle different materials and keep our planet clean",
-        link: "/courses/coming-soon",
-        image: "/image/banner2.png",
-        points: 10
-      },
-      { 
-        title: "Save Water", 
-        description: "Discover simple ways to conserve water",
-        link: "/courses/coming-soon",
-        image: "/image/banner1.png",
-        points: 10
-      },
-      { 
-        title: "Green Energy", 
-        description: "Explore renewable energy sources and technologies",
-        link: "/courses/coming-soon",
-        image: "/image/banner4.gif",
-        points: 10
-      }
+      { title: "Recycling Basics", description: "Learn recycling.", link: "/EduQuest/courses/coming-soon", image: banner2, points: 10 },
+      { title: "Save Water", description: "Conserve water.", link: "/EduQuest/courses/coming-soon", image: banner1, points: 10 },
+      { title: "Green Energy", description: "Renewable energy.", link: "/EduQuest/courses/coming-soon", image: banner4, points: 10 }
     ],
   };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white text-xl" style={{ fontFamily: "regular" }}>Loading your dashboard...</div>
+        <div className="text-white text-xl">Loading your dashboard...</div>
       </div>
     );
   }
 
-  if (!profile) {
-    return null; 
-  }
+  if (!profile) return null;
 
   const recommended = courses[profile.age_category] || [];
 
   return (
     <div className="relative bg-[#020618] min-h-screen overflow-hidden">
-      {/* Gridlines in the background */}
+
       <Gridlines
         cellWidth={25}
         cellHeight={30}
@@ -140,44 +92,37 @@ const Dashboard = () => {
         className="absolute inset-0 pointer-events-none"
       />
 
-      {/* Header with background and gridlines */}
-      <div className="relative z-20 bg-black/90 backdrop-blur-sm">
+      <div className="relative z-20 bg-black/90">
         <Header />
       </div>
       
-        {/* Banner below header */}
-        <div className="relative z-10 h-100 overflow-hidden">
-          <img src="/image/banner.gif" alt="" className="w-full h-full object-cover" />
-        </div>
+      {/* ✅ Banner fixed */}
+      <div className="relative z-10 h-100 overflow-hidden">
+        <img src={banner} alt="" className="w-full h-full object-cover" />
+      </div>
 
-      {/* Page content */}
       <div className="relative z-10 pt-8 pb-16">
-        {/* Welcome Section */}
-        <div className="container mx-auto px-6 text-center mb-12">
-          <div 
-            className="text-4xl font-bold text-white mb-4"
-            style={{ fontFamily: "heading" }}
-          >
-            Welcome back, {profile.name}! 
+
+        <div className="text-center mb-12">
+          <div className="text-4xl font-bold text-white mb-4">
+            Welcome back, {profile.name}!
           </div>
-          <div className="flex justify-center items-center space-x-8 text-white mt-10" style={{ fontFamily: "regular" }}>
-            <div className="bg-[#12122b] border-2 border-[#68696a] rounded-lg p-4">
-              <div className="text-2xl font-bold text-[#14ADFF]">{profile.points || 0}</div>
-              <div className="text-sm">Total Points</div>
+
+          <div className="flex justify-center gap-6 text-white mt-10">
+            <div className="bg-[#12122b] p-4 rounded-lg">
+              <div className="text-2xl text-[#14ADFF]">{profile.points || 0}</div>
+              <div>Total Points</div>
             </div>
-            <div className="bg-[#12122b] border-2 border-[#68696a] rounded-lg p-4">
-              <div className="text-2xl font-bold text-[#B4E50D]">{profile.age_category}</div>
-              <div className="text-sm">Age Group</div>
+            <div className="bg-[#12122b] p-4 rounded-lg">
+              <div className="text-2xl text-[#B4E50D]">{profile.age_category}</div>
+              <div>Age Group</div>
             </div>
           </div>
         </div>
 
-        {/* Recommended Courses */}
+        {/* Courses */}
         <div className="container mx-auto px-6 mt-10">
-          <h2 
-            className="text-3xl font-bold text-white mb-8 text-center"  
-            style={{ fontFamily: "heading" }}
-          >
+          <h2 className="text-3xl text-white text-center mb-8">
             Recommended for You
           </h2>
           
@@ -188,36 +133,26 @@ const Dashboard = () => {
                   title={course.title}
                   desc={course.description}
                   source={course.image}
-                  tags={[`+${course.points} pts`]}
-                >
-                  <RetroButton 
-                    text="Start" 
-                    className="px-4 py-2 text-sm"
-                    onClick={() => navigate(course.link)}
-                  />
-                </RetroCards>
+                />
               </div>
             ))}
           </div>
 
-          {/* Quick Actions */}
-          <div className="flex justify-center space-x-4">
+          {/* ✅ Navigation fixed */}
+          <div className="flex justify-center gap-4">
             <RetroButton 
               text="View All Courses" 
-              onClick={() => navigate("/all-courses")}
-              className="px-6 py-3"
+              onClick={() => navigate("/EduQuest/all-courses")}
             />
             <RetroButton 
               text="Leaderboard" 
-              onClick={() => navigate("/leaderboard")}
-              className="px-6 py-3"
+              onClick={() => navigate("/EduQuest/leaderboard")}
             />
           </div>
         </div>
       </div>
 
-      {/* Footer with background and gridlines */}
-      <div className="relative z-20 bg-black/90 backdrop-blur-sm">
+      <div className="relative z-20 bg-black/90">
         <Footer />
       </div>
     </div>
