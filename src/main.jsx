@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./SupabaseClient";
-import RetroButton from "../components/RetroButton";
+import RetroButton from "./components/RetroButton";
 import Gridlines from "react-gridlines";
 
 const SelectAge = () => {

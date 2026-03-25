@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../../SupabaseClient";
+import { supabase } from "./SupabaseClient";
 
 function Profile() {
   const { user, isLoaded } = useUser();
