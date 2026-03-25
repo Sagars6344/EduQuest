@@ -66,53 +66,56 @@ const Router = createBrowserRouter([
         </>,
         errorElement:<ErrorPage/>
     },
-     {
-    path: "/sign-in/*",
-    element: <>
-    <ScrollToTop/>
-    <SignInPage />
-    </>,
-    errorElement: <ErrorPage />,
+    {
+        path: "/sign-in/*",
+        element: <>
+        <ScrollToTop/>
+        <SignInPage />
+        </>,
+        errorElement: <ErrorPage />,
     },
     {
-    path: "/sign-up/*",
-    element: <>
-    <ScrollToTop/>
-    <SignUpPage />
-    </>,
-    errorElement: <ErrorPage />,
+        path: "/sign-up/*",
+        element: <>
+        <ScrollToTop/>
+        <SignUpPage />
+        </>,
+        errorElement: <ErrorPage />,
     },
     {
-    path: "/select-age",
-    element: <>
-    <ScrollToTop/>
-    <ProtectedRoute><SelectAge /></ProtectedRoute>
-    </>,
-    errorElement: <ErrorPage />,
+        path: "/select-age",
+        element: <>
+        <ScrollToTop/>
+        <ProtectedRoute><SelectAge /></ProtectedRoute>
+        </>,
+        errorElement: <ErrorPage />,
     },
     {
-    path: "/dashboard",
-    element: <>
-    <ScrollToTop/>
-    <ProtectedRoute><Dashboard /></ProtectedRoute>
-    </>,
-    errorElement: <ErrorPage />,
+        path: "/dashboard",
+        element: <>
+        <ScrollToTop/>
+        <ProtectedRoute><Dashboard /></ProtectedRoute>
+        </>,
+        errorElement: <ErrorPage />,
     },
     {
-    path: "/leaderboard",
-    element: <>
-    <ScrollToTop/>
-    <ProtectedRoute><Leaderboard /></ProtectedRoute>
-    </>,
-    errorElement: <ErrorPage />,
+        path: "/leaderboard",
+        element: <>
+        <ScrollToTop/>
+        <ProtectedRoute><Leaderboard /></ProtectedRoute>
+        </>,
+        errorElement: <ErrorPage />,
     },
     {
-    path: "/courses/coming-soon",
-    element: <>
-    <ScrollToTop/>
-    <ProtectedRoute><ComingSoon /></ProtectedRoute>
-    </>,
-    errorElement: <ErrorPage />,
+        path: "/courses/coming-soon",
+        element: <>
+        <ScrollToTop/>
+        <ProtectedRoute><ComingSoon /></ProtectedRoute>
+        </>,
+        errorElement: <ErrorPage />,
     },
-]);
+], {
+    basename: "/EduQuest/"   // 👈🔥 YE LINE ADD KI HAI
+});
+
 export default Router;
