@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar';
 import RetroCards from '../components/RetroCards'; 
 import Gridlines from 'react-gridlines';
 
+
 // ✅ IMPORT ALL IMAGES
 import img1 from "../assets/origbig1.png";
 import img2 from "../assets/origbig2.png";
