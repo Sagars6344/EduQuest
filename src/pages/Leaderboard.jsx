@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
-import { supabase } from "../SupabaseClient";
+import { supabase } from "./SupabaseClient";
 import Header from "../components/Header";
 import Footer from "../components/Footer"; // ✅ fixed case
 import RetroButton from "../components/RetroButton";
